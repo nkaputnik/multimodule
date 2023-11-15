@@ -5,8 +5,9 @@
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "workspaces": [
-    "./books",
-    "./customer"
+    "books",
+    "customers",
+    "orders"
   ],
   "dependencies": {
     "@sap/cds": "^7",

@@ -1,10 +1,9 @@
 {
-  "name": "@capire/customer",
+  "name": "@capire/customers",
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
-  "private": true,
   "dependencies": {
     "@sap/cds": "^7",
     "express": "^4",

@@ -1,23 +1,22 @@
 # Getting Started
 
-Welcome to your new project.
+This is the multimodule sample for shared data stratgegies.
 
 It contains these folders and files, following our recommended project layout:
 
-File or Folder | Purpose
+Module | Purpose
 ---------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+`books` | shared content for all modules
+`customers` | shared content for some modules
+`orders` | CAP application reusing `books` and `customer`
 
 
-## Next Steps
+## Setup
 
-- Open a new terminal and run `cds watch` 
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
+- Open a terminal in the **root** directory of the project
+- Run  `npm i`
+- each individual module will no be able to run using the **workspace** concept
+- either switch to mthe `orders` directory and run `cds w` or run `cds w orders` 
 
 
 ## Learn More
