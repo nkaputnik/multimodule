@@ -1,5 +1,4 @@
 using { Country, Currency, managed, cuid, sap.common.CodeList } from '@sap/cds/common';
-using { sap.common.Countries, sap.common.Currencies, sap.common.Languages } from '@sap/cds-common-content';
 
 namespace sap.capire.customer;
 
