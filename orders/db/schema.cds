@@ -2,7 +2,7 @@ using { Country, Currency, managed, cuid, sap.common.CodeList } from '@sap/cds/c
 using { CatalogService.Books } from '@capire/books';
 using { CustomerService.Customers } from '@capire/customers';
 
-namespace com.sap.capire;
+namespace sap.capire.orders;
 
 entity Orders : cuid, managed {
 
