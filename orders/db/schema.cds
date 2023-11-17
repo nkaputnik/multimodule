@@ -7,7 +7,7 @@ namespace com.sap.capire;
 entity Orders : cuid, managed {
 
   OrderNo  : String @title:'Order Number'; //> readable key
-  Items    : Composition of many OrderItems on Items.parent_ID = ID;
+  Items    : Composition of many OrderItems on Items.parent = $self;
   currency : Currency;
 
   Customer          : Association to Customers @title : '{i18n>CUSTOMER}'; 
@@ -15,7 +15,7 @@ entity Orders : cuid, managed {
 }
 
 entity OrderItems : cuid {
-  parent_ID    : UUID;
+  parent    : Association to one Orders;
   book      : Association to Books;
   amount    : Integer;
   netAmount : Decimal(9,2);
