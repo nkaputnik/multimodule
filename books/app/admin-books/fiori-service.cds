@@ -57,7 +57,6 @@ annotate AdminService.Books with @(UI: {
 //  Draft for Localized Data
 //
 
-annotate sap.capire.bookshop.Books with @fiori.draft.enabled;
 annotate AdminService.Books with @odata.draft.enabled;
 
 annotate AdminService.Books.texts with @(UI: {
