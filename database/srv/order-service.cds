@@ -1,6 +1,6 @@
-using from '@capire/books';
-using {sap.capire.customer} from '@capire/customers';
-using {sap.capire.orders} from '../db/schema';
+//using {sap.capire.bookshop} from '@capire/books';
+//using {sap.capire.customer} from '@capire/customers';
+using {sap.capire.orders, sap.capire.customer, sap.capire.bookshop} from '../db/schema';
 
 service OrderService {
     entity Orders         as projection on orders.Orders;
