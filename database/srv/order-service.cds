@@ -3,11 +3,17 @@
 using {sap.capire.orders, sap.capire.customer, sap.capire.bookshop} from '../db/schema';
 
 service OrderService {
+    @cds.redirection.target
     entity Orders         as projection on orders.Orders;
 
     entity CustomerOrders as
         select from customer.Customers {
             *,
             orders : Association to many orders.Orders on orders.Customer.ID = ID
-        }
+        };
+     entity OrderBooks as projection on orders.Orders {
+        OrderNo,
+        Customer.email,
+        Items.book.title
+     }    
 }
