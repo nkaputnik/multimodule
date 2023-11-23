@@ -1,18 +1,16 @@
 {
-  "name": "@capire/multimodule",
+  "name": "@capire/database",
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
-  "workspaces": [
-    "books",
-    "customers",
-    "orders",
-    "database"
-  ],
+  "private": true,
   "dependencies": {
     "@sap/cds": "^7",
-    "express": "^4"
+    "express": "^4",
+    "@capire/books": "*",
+    "@capire/customers": "*",
+    "@capire/orders": "*"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1"
