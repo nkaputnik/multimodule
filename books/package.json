@@ -6,7 +6,8 @@
   "license": "UNLICENSED",
   "dependencies": {
     "@sap/cds": "^7",
-    "express": "^4"
+    "express": "^4",
+    "@capire/database": "*"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1"

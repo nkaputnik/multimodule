@@ -7,7 +7,8 @@
   "dependencies": {
     "@sap/cds": "^7",
     "express": "^4",
-    "@sap/cds-common-content": "*"
+    "@sap/cds-common-content": "*",
+    "@capire/database": "*"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1"
