@@ -8,7 +8,8 @@
     "@sap/cds": "^7",
     "express": "^4",
     "@capire/books": "*",
-    "@capire/customers": "*"
+    "@capire/customers": "*",
+    "@capire/database": "*"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1"
