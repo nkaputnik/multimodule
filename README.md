@@ -2,22 +2,29 @@
 
 This is the multimodule sample for shared data stratgegies.
 
-It contains these folders and files, following our recommended project layout:
+The main branch is simply the sample application used for all scenarios. It is not intended to be directly used.
+The application consists of a couple of modules:
 
 Module | Purpose
 ---------|----------
 `books` | shared content for all modules
 `customers` | shared content for some modules
 `orders` | CAP application reusing `books` and `customer`
+`database` | optional module depending on scenario
+
+The repository contains multiple branches, which setup the build in different directions.
+The branches are:
+
+Branch Name | Purpose
+-----|-----
+`db-monolith` | all DB and service definitions in one central module
+`db-central-build` | each service has own DB and service definitions, but the build is central
 
 
 ## Setup
 
-- Open a terminal in the **root** directory of the project
-- Run  `npm i`
-- each individual module will no be able to run using the **workspace** concept
-- either switch to mthe `orders` directory and run `cds w` or run `cds w orders` 
-
+- Change to the desired branch of the repository
+- Follow the readme of that specific branch
 
 ## Learn More
 
