@@ -18,7 +18,7 @@ Module | Purpose
 - Run  `npm i`
 - each individual module will no be able to run using the **workspace** concept
 - deploy the main DB by running `cds deploy --to sqlite:../db.sqlite` from the `database` directory
-- either switch to mthe `orders` directory and run `cds w` or run `cds w orders` 
+- either switch to the `orders` directory and run `cds w` or run `cds w orders` 
 - run the other services (`books` and `customers`) on other ports
 - all services will access the same physical DB in the root directory of the project
 - test the multi-service setup:
