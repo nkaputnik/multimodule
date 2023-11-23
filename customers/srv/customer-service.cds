@@ -1,1 +1,1 @@
-using { CustomerService } from '@capire/database';
+using { CustomerService } from '@capire/database/srv/customer-service';

@@ -1,1 +1,2 @@
-using from './app/services';
+using from './srv/admin-service';
+using from './srv/cat-service';

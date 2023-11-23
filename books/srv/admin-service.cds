@@ -1,1 +1,1 @@
-using {AdminService} from '@capire/database';
+using {AdminService} from '@capire/database/srv/admin-service';

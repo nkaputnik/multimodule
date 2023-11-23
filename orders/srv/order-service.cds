@@ -1,1 +1,1 @@
-using { OrderService } from '@capire/database';
+using { OrderService } from '@capire/database/srv/order-service';

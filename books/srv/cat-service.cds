@@ -1,1 +1,1 @@
-using { CatalogService } from '@capire/database';
+using { CatalogService } from '@capire/database/srv/cat-service';
