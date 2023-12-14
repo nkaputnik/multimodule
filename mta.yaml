@@ -1,0 +1,128 @@
+_schema-version: '3.1'
+ID: capire.multimodule
+version: 1.0.0
+description: "A simple CAP project."
+
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npx cds build ./database --production --workspaces --opts workspaceRoot=..
+        - npx cds build ./books --production -ws
+        - npx cds build ./customers --production -ws
+        - npx cds build ./orders --production -ws
+
+modules:
+  - name: books-srv
+    type: nodejs
+    path: books/gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+    provides:
+      - name: books-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: books-auth
+      - name: database-db
+
+  - name: customers-srv
+    type: nodejs
+    path: customers/gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+    provides:
+      - name: customers-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: customers-auth
+      - name: database-db
+
+  - name: orders-srv
+    type: nodejs
+    path: orders/gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+    provides:
+      - name: orders-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: orders-auth
+      - name: database-db
+
+  - name: database-db-deployer
+    type: hdb
+    path: database/gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: database-db
+
+  - name: multimodule
+    type: approuter.nodejs
+    path: app/
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: books-api
+        group: destinations
+        properties:
+          name: books-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: books-auth
+
+resources:
+  - name: database-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: database-${org}-${space}
+        tenant-mode: dedicated
+  - name: books-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: books-${org}-${space}
+        tenant-mode: dedicated
+  - name: customers-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: customers-${org}-${space}
+        tenant-mode: dedicated
+  - name: orders-auth 
+    type: org.cloudfoundry.managed-service
+    parameters: 
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: orders-${org}-${space}
+        tenant-mode: dedicated
+  - name: database-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared

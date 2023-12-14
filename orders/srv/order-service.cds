@@ -1,4 +1,4 @@
-using from '@capire/books';
+//using from '@capire/books';
 using {sap.capire.customer} from '@capire/customers';
 using {com.sap.capire} from '../db/schema';
 
