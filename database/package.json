@@ -8,9 +8,9 @@
   "dependencies": {
     "@sap/cds": "^7",
     "express": "^4",
-    "@capire/books": "*",
-    "@capire/customers": "*",
-    "@capire/orders": "*",
+    "@capire/books": "../books",
+    "@capire/customers": "../customers",
+    "@capire/orders": "../orders",
     "@sap/xssec": "^3",
     "passport": "^0",
     "@sap/cds-hana": "^2"
