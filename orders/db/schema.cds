@@ -1,6 +1,6 @@
 using { Country, Currency, managed, cuid, sap.common.CodeList } from '@sap/cds/common';
-using { CatalogService.Books } from '@capire/books';
-using { CustomerService.Customers } from '@capire/customers';
+using { CatalogService.Books } from '../../books';
+using { CustomerService.Customers } from '../../customers';
 
 namespace com.sap.capire;
 
