@@ -1,5 +1,5 @@
 //using from '@capire/books';
-using {sap.capire.customer} from '@capire/customers';
+using {sap.capire.customer} from '../../customers';
 using {com.sap.capire} from '../db/schema';
 
 service OrderService {
