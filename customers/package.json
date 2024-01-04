@@ -8,6 +8,7 @@
     "@sap/cds": "^7",
     "express": "^4",
     "@sap/xssec": "^3",
+    "passport": "^0",
     "@sap/cds-common-content": "^1",
     "@sap/cds-hana": "^2"
   },
