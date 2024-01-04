@@ -27,7 +27,6 @@
           "url": "../db.sqlite"
         }
       },
-      "auth": "xsuaa",
       "[production]": {
         "auth": "xsuaa",
         "db": "hana"

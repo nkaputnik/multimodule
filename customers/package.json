@@ -23,6 +23,10 @@
         "credentials": {
           "url": "../db.sqlite"
         }
+      },
+      "[production]": {
+        "auth": "xsuaa",
+        "db": "hana"
       }
     }
   }
