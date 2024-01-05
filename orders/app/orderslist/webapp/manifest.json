@@ -72,7 +72,12 @@
           "synchronizationMode": "None",
           "operationMode": "Server",
           "autoExpandSelect": true,
-          "earlyRequests": true
+          "earlyRequests": true,
+          "groupProperties": {
+            "default": {
+              "submit": "Auto"
+            }
+          }
         }
       },
       "@i18n": {
@@ -110,6 +115,7 @@
           "options": {
             "settings": {
               "entitySet": "Orders",
+              "initialLoad": true,
               "variantManagement": "Page",
               "navigation": {
                 "Orders": {
