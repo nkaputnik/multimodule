@@ -9,10 +9,10 @@ build-parameters:
   before-all:
     - builder: custom
       commands:
-        - npx cds build ./database --production --ws --opts workspaceRoot=..
-        - npx cds build ./books --production --ws --opts workspaceRoot=..
-        - npx cds build ./customers --production --ws --opts workspaceRoot=..
-        - npx cds build ./orders --production --ws --opts workspaceRoot=..
+        - npx cds build ./database --production --ws
+        - npx cds build ./books --for nodejs --production
+        - npx cds build ./customers --for nodejs --production
+        - npx cds build ./orders --for nodejs --production
 
 modules:
   - name: books-srv
