@@ -9,7 +9,7 @@ build-parameters:
   before-all:
     - builder: custom
       commands:
-        - npx cds build ./database --production --ws
+        - npx cds build --for hana --production --ws
         - npx cds build ./books --for nodejs --production
         - npx cds build ./customers --for nodejs --production
         - npx cds build ./orders --for nodejs --production
@@ -62,7 +62,7 @@ modules:
 
   - name: database-db-deployer
     type: hdb
-    path: database/gen/db
+    path: gen/db
     parameters:
       buildpack: nodejs_buildpack
     requires:
