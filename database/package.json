@@ -6,6 +6,9 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@capire/books": "*",
+    "@capire/customers": "*",
+    "@capire/orders": "*",
     "@sap/cds": "^7",
     "express": "^4",
     "@sap/xssec": "^3",
