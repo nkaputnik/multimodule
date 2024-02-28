@@ -1,7 +1,7 @@
 using OrderService as service from '../../srv/order-service';
-using {com.sap.capire.Orders} from '../../db/schema';
+using {sap.capire.order.Orders} from '../../db/schema';
 
-annotate com.sap.capire.Orders with @fiori.draft.enabled;
+annotate sap.capire.order.Orders with @fiori.draft.enabled;
 annotate service.Orders with @odata.draft.enabled;
 
 annotate service.Orders with {
