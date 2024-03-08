@@ -94,6 +94,17 @@ modules:
       - name: multimodule-registry
       - name: multimodule-db
       - name: orders-auth
+  - name: multimodule-srv
+    type: nodejs
+    path: gen/srv
+    requires:
+      - name: multimodule-registry
+      - name: multimodule-db
+      - name: orders-auth
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
 
 resources:
   - name: database-auth

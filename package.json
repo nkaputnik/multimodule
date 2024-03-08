@@ -27,9 +27,12 @@
   "cds": {
     "requires": {
       "[production]": {
-        "auth": "xsuaa"
+        "auth": "xsuaa",
+        "multitenancy": true
       },
-      "multitenancy": true
+      "[local-multitenancy]": {
+        "multitenancy": true
+      }
     },
     "profile": "with-mtx-sidecar"
   }
