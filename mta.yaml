@@ -28,7 +28,6 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: books-auth
-      - name: database-db
 
   - name: customers-srv
     type: nodejs
@@ -43,7 +42,6 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: customers-auth
-      - name: database-db
 
   - name: orders-srv
     type: nodejs
@@ -58,15 +56,6 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: orders-auth
-      - name: database-db
-
-  - name: database-db-deployer
-    type: hdb
-    path: database/gen/db
-    parameters:
-      buildpack: nodejs_buildpack
-    requires:
-      - name: database-db
 
   - name: books-approuter
     type: approuter.nodejs
@@ -87,6 +76,24 @@ modules:
       - name: books-approuter-api
         properties:
           app-url: '${default-url}'
+
+  - name: multimodule-mtx
+    type: nodejs
+    path: gen/mtx/sidecar
+    build-parameters:
+      builder: npm-ci
+    parameters:
+      memory: 256M
+      disk-quota: 512M
+    provides:
+      - name: mtx-api
+        properties:
+          mtx-url: ${default-url}
+    requires:
+      - name: multimodule-auth
+      - name: multimodule-registry
+      - name: multimodule-db
+      - name: orders-auth
 
 resources:
   - name: database-auth
@@ -116,17 +123,37 @@ resources:
       config:
         xsappname: customers-${org}-${space}
         tenant-mode: dedicated
-  - name: orders-auth 
+  - name: orders-auth
     type: org.cloudfoundry.managed-service
-    parameters: 
+    parameters:
       service: xsuaa
       service-plan: application
       path: ./xs-security.json
       config:
         xsappname: orders-${org}-${space}
-        tenant-mode: dedicated
-  - name: database-db
-    type: com.sap.xs.hdi-container
+        tenant-mode: shared
+  - name: multimodule-registry
+    type: org.cloudfoundry.managed-service
+    requires:
+      - name: mtx-api
     parameters:
-      service: hana
-      service-plan: hdi-shared
+      service: saas-registry
+      service-plan: application
+      config:
+        xsappname: multimodule-${org}-${space}
+        appName: multimodule-${org}-${space}
+        displayName: multimodule
+        description: A simple CAP project.
+        category: 'Category'
+        appUrls:
+          getDependencies: ~{mtx-api/mtx-url}/-/cds/saas-provisioning/dependencies
+          onSubscription: ~{mtx-api/mtx-url}/-/cds/saas-provisioning/tenant/{tenantId}
+          onSubscriptionAsync: true
+          onUnSubscriptionAsync: true
+          onUpdateDependenciesAsync: true
+          callbackTimeoutMillis: 300000 # Increase if your deployments are taking longer than that
+  - name: multimodule-db
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: service-manager
+      service-plan: container
