@@ -6,10 +6,11 @@
   "license": "UNLICENSED",
   "dependencies": {
     "@sap/cds": "^7",
-    "express": "^4",
+    "@sap/cds-hana": "^2",
+    "@sap/cds-mtxs": "^1.9",
     "@sap/xssec": "^3",
-    "passport": "^0",
-    "@sap/cds-hana": "^2"
+    "express": "^4",
+    "passport": "^0"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
@@ -30,7 +31,11 @@
       "[production]": {
         "auth": "xsuaa",
         "db": "hana"
+      },
+      "[local-multitenancy]": {
+        "multitenancy": true
       }
-    }
+    },
+    "profile": "with-mtx-sidecar"
   }
 }

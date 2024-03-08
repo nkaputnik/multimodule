@@ -12,8 +12,9 @@
   ],
   "dependencies": {
     "@sap/cds": "^7",
-    "express": "^4",
+    "@sap/cds-mtxs": "^1.9",
     "@sap/xssec": "^3",
+    "express": "^4",
     "passport": "^0"
   },
   "devDependencies": {
@@ -26,8 +27,13 @@
   "cds": {
     "requires": {
       "[production]": {
-        "auth": "xsuaa"
+        "auth": "xsuaa",
+        "multitenancy": true
+      },
+      "[local-multitenancy]": {
+        "multitenancy": true
       }
-    }
+    },
+    "profile": "with-mtx-sidecar"
   }
 }

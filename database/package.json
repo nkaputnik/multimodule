@@ -10,9 +10,10 @@
     "@capire/customers": "*",
     "@capire/orders": "*",
     "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/cds-mtxs": "^1.9",
     "@sap/xssec": "^3",
-    "passport": "^0",
-    "@sap/cds-hana": "^2"
+    "passport": "^0"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
@@ -25,15 +26,21 @@
         "impl": "@cap-js/sqlite",
         "credentials": {
           "url": "../db.sqlite"
-        }
+        },
+        "multitenancy": true
       },
       "[production]": {
         "auth": "xsuaa",
         "db": {
           "kind": "hana"
-        }
+        },
+        "multitenancy": true
       },
-      "auth": "xsuaa"
-    }
+      "auth": "xsuaa",
+      "[local-multitenancy]": {
+        "multitenancy": true
+      }
+    },
+    "profile": "with-mtx-sidecar"
   }
 }
