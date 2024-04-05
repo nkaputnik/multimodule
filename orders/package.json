@@ -5,6 +5,8 @@
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "dependencies": {
+    "@capire/customers": "*",
+    "@capire/books": "*",
     "@sap/cds": "^7",
     "@sap/cds-hana": "^2",
     "@sap/xssec": "^3",
@@ -23,7 +25,6 @@
     "requires": {
       "db": {
         "kind": "sqlite",
-        "impl": "@cap-js/sqlite",
         "credentials": {
           "url": "../db.sqlite"
         }
