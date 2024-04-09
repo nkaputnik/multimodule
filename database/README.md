@@ -1,1 +1,0 @@
-This defines the central database module. The deployment of this module is part of root-level mta.yaml.
